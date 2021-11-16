@@ -8,6 +8,11 @@ window.addEventListener("load", function() {
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
 	video.play();
+	var volume = slider.value / 100;
+	video.volume = volume;
+	volume = volume * 100;
+	var volumestring = volume + "%";
+	document.getElementById("volume").innerHTML = volumestring;
 });
 
 document.querySelector("#pause").addEventListener("click", function() {
@@ -44,29 +49,22 @@ document.querySelector("#mute").addEventListener("click", function() {
 	if (video.muted == true) {
 		video.muted = false;
 		console.log("Video unmuted");
-
+		document.getElementById("mute").innerHTML = "Mute";
 	}
 	else {
 		video.muted = true;
 		console.log("Video muted");
+		document.getElementById("mute").innerHTML = "Unmute";
 	}
 });
 
 document.querySelector("#slider").addEventListener("click", function() {
-
-	// slider.oninput = function() {
-	// 	output.innerHTML = this.value;
-	//   }
 	var volume = slider.value / 100;
 	video.volume = volume;
-	// console.log(document.getElementById("#volume"));
-	// document.getElementById("#volume").textContent("hello");
 	volume = volume * 100;
 	var volumestring = volume + "%";
 	console.log("Volume is:", volumestring);
 	document.getElementById("volume").innerHTML = volumestring;
-	// console.log(document.getElementById("#volume"));
-	// ADD THE VOLUME DOWN BELOW WRITTEN ON THE PAGE
 });
 
 document.querySelector("#vintage").addEventListener("click", function() {
